@@ -1,0 +1,686 @@
+{
+    "batches": [
+        {
+            "id": "0420b5bccc",
+            "status": "consumer",
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 13:17",
+            "completed_at": "2019-09-09 13:17",
+            "response_body_url": "35",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0420b5bccc",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0420b5bccc",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "0570554f1e",
+            "status": "consumer",
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 13:15",
+            "completed_at": "2019-09-09 13:15",
+            "response_body_url": "34",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0570554f1e",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0570554f1e",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "0736e1df97",
+            "status": "merchant",
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "09\/09\/2019 13:15",
+            "completed_at": "2019-09-09 13:15",
+            "response_body_url": "34",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0736e1df97",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0736e1df97",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "085c6d94b2",
+            "status": null,
+            "total_operations": 9,
+            "finished_operations": 9,
+            "errored_operations": 9,
+            "submitted_at": "05\/09\/2019 10:26",
+            "completed_at": "2019-09-05 10:26",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/085c6d94b2",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/085c6d94b2",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "0ce59877ec",
+            "status": null,
+            "total_operations": 9,
+            "finished_operations": 9,
+            "errored_operations": 8,
+            "submitted_at": "05\/09\/2019 08:33",
+            "completed_at": "2019-09-05 08:33",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0ce59877ec",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/0ce59877ec",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "20bb3e3867",
+            "status": "consumer",
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 13:13",
+            "completed_at": "2019-09-09 13:13",
+            "response_body_url": "33",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/20bb3e3867",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/20bb3e3867",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "227f801a82",
+            "status": "merchant",
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "09\/09\/2019 13:13",
+            "completed_at": "2019-09-09 13:13",
+            "response_body_url": "33",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/227f801a82",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/227f801a82",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "34893dc642",
+            "status": null,
+            "total_operations": 9,
+            "finished_operations": 9,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 09:31",
+            "completed_at": "2019-09-09 09:31",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/34893dc642",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/34893dc642",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "35cd4a8012",
+            "status": "merchant",
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "09\/09\/2019 13:17",
+            "completed_at": "2019-09-09 13:17",
+            "response_body_url": "35",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/35cd4a8012",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/35cd4a8012",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "3d96fb4456",
+            "status": null,
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "06\/09\/2019 08:08",
+            "completed_at": "2019-09-06 08:08",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/3d96fb4456",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/3d96fb4456",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "4fdef0e5b0",
+            "status": null,
+            "total_operations": 7,
+            "finished_operations": 7,
+            "errored_operations": 7,
+            "submitted_at": "05\/09\/2019 08:08",
+            "completed_at": "2019-09-05 08:08",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/4fdef0e5b0",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/4fdef0e5b0",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "5277d8c042",
+            "status": null,
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "05\/09\/2019 08:21",
+            "completed_at": "2019-09-05 08:21",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/5277d8c042",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/5277d8c042",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "55b49d88ec",
+            "status": "merchant",
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "09\/09\/2019 13:19",
+            "completed_at": "2019-09-09 13:19",
+            "response_body_url": "36",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/55b49d88ec",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/55b49d88ec",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "5af62cc09e",
+            "status": "consumer",
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 13:10",
+            "completed_at": "2019-09-09 13:10",
+            "response_body_url": "32",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/5af62cc09e",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/5af62cc09e",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "7bb7b1820c",
+            "status": null,
+            "total_operations": 3,
+            "finished_operations": 3,
+            "errored_operations": 3,
+            "submitted_at": "05\/09\/2019 08:10",
+            "completed_at": "2019-09-05 08:10",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/7bb7b1820c",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/7bb7b1820c",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "838d9e7b51",
+            "status": null,
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "05\/09\/2019 08:08",
+            "completed_at": "2019-09-05 08:08",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/838d9e7b51",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/838d9e7b51",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "a40e5cd6cc",
+            "status": null,
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "06\/09\/2019 08:09",
+            "completed_at": "2019-09-06 08:09",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/a40e5cd6cc",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/a40e5cd6cc",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "a5e732f128",
+            "status": "consumer",
+            "total_operations": 8,
+            "finished_operations": 8,
+            "errored_operations": 8,
+            "submitted_at": "09\/09\/2019 13:19",
+            "completed_at": "2019-09-09 13:19",
+            "response_body_url": "36",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/a5e732f128",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/a5e732f128",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "c6325e5793",
+            "status": null,
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "05\/09\/2019 08:10",
+            "completed_at": "2019-09-05 08:10",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/c6325e5793",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/c6325e5793",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "d9cc6616d6",
+            "status": null,
+            "total_operations": 3,
+            "finished_operations": 3,
+            "errored_operations": 3,
+            "submitted_at": "06\/09\/2019 08:08",
+            "completed_at": "2019-09-06 08:08",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/d9cc6616d6",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/d9cc6616d6",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "df645c292a",
+            "status": null,
+            "total_operations": 3,
+            "finished_operations": 3,
+            "errored_operations": 3,
+            "submitted_at": "06\/09\/2019 08:09",
+            "completed_at": "2019-09-06 08:09",
+            "response_body_url": null,
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/df645c292a",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/df645c292a",
+                    "method": "DELETE"
+                }
+            ]
+        },
+        {
+            "id": "e69a8ca756",
+            "status": "merchant",
+            "total_operations": 1,
+            "finished_operations": 1,
+            "errored_operations": 1,
+            "submitted_at": "09\/09\/2019 13:11",
+            "completed_at": "2019-09-09 13:11",
+            "response_body_url": "32",
+            "_links": [
+                {
+                    "rel": "parent",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+                    "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+                },
+                {
+                    "rel": "self",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/e69a8ca756",
+                    "method": "GET",
+                    "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/Response.json"
+                },
+                {
+                    "rel": "delete",
+                    "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches\/e69a8ca756",
+                    "method": "DELETE"
+                }
+            ]
+        }
+    ],
+    "total_items": 22,
+    "_links": [
+        {
+            "rel": "parent",
+            "href": "https:\/\/us3.api.mailchimp.com\/3.0\/",
+            "method": "GET",
+            "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Root\/Response.json"
+        },
+        {
+            "rel": "self",
+            "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+            "method": "GET",
+            "targetSchema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/CollectionResponse.json",
+            "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/CollectionLinks\/Batches.json"
+        },
+        {
+            "rel": "create",
+            "href": "https:\/\/us3.api.mailchimp.com\/3.0\/batches",
+            "method": "POST",
+            "schema": "https:\/\/us3.api.mailchimp.com\/schema\/3.0\/Definitions\/Batches\/POST.json"
+        }
+    ]
+}

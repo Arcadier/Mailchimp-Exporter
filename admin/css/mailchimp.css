@@ -1,0 +1,271 @@
+.icon.icon-mailchimp{ background: url(../images/bitmap.png) no-repeat 0 0;}
+.icon-3x.icon.icon-mailchimp{background: url(../images/Mailchimp.svg) no-repeat 0 0;background-size: contain;}
+.btn-area.auto {width: auto;}
+.btn-area .btn-black { background-color: #4d4d4d; height: 40px; width: 150px;  max-width: 100%;
+    color: #fff;
+    border: none;
+    display: inline-block;
+    text-align: center;
+    line-height: 40px;
+}
+.btn-area a {
+  color: #fff;
+}
+
+.sync-data {
+	display: inline-block;
+	width: 100%;
+	margin-top: 20px;
+}
+.sync-data label {
+	font-weight: 600;
+	font-size: 14px;
+	margin-bottom: 15px;
+}
+.btn-area span {
+	padding-left: 15px;
+}
+.popup-area.item-remove-popup {
+
+    width: 480px;
+
+}
+.popup-area .wrapper {
+
+    padding: 30px 30px 20px;
+
+}
+.modal, .popup-area {
+
+    z-index: 99999;
+
+}
+#cover, .popup-area {
+
+    position: fixed;
+    left: 0;
+
+}
+.popup-area {
+
+    background: #fff;
+    border: 1px solid #bfbfbd;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    top: 20%;
+    width: 650px;
+    display: none;
+
+}
+.form-area .form-element .txt {
+	padding: 0 15px;
+}
+.confirm-edit-api .content-area p  {
+  font-size: 18px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #333333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.close-popup {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+}
+.page-mailchimp .private-setting-switch .onoffswitch-inner::before, .page-mailchimp .private-setting-switch .onoffswitch-inner::after{
+	font-weight: 400;
+}.btn-area .btn-black#edit {
+  background:#999;
+}
+.template-sidebar .section-links li.item-lng.active .sm-submenu.submenu-devapp { background: url('../images/white-dev-apps.svg')no-repeat;}
+.template-sidebar .section-links li.item-lng .sm-submenu.submenu-devapp { background: url('../images/black-dev-apps.svg')no-repeat;}
+.template-sidebar .section-links li.active > a {color: #fff; background-color: #50c8ff; border-left-color: #50c8ff;}
+.user-info-field { max-width: 400px;}
+.user-info-field .col-md-6 { padding-left: 0px;}
+.form-area .form-element .txt { max-width: 100%;}
+.mailchampk-sync-msg{ margin-top:15px; color:#000; }
+.mailchampk-notes-sec p {color: #999999;}
+.mailchampk-notes-sec{margin-top: 20px;color: #000;}
+.mailchampk-sync-smsg{float: left; margin-right: 25px;}
+.mailchampk-sync-emsg{ float: left;}
+.mailchampk-sync-tmsg{ float: left;margin-right: 25px;}
+.mailchampk-sync-smsg span{ color: #1dc300; font-weight: bold;}
+.mailchampk-sync-emsg span{ color: #f00; font-weight: bold;} 
+.mailchampk-sync-tmsg span{ color: #50C8FE; font-weight: bold;} 
+
+
+
+.page-mailchimpsync-log .blsl-list-tblsec table thead th { padding: 0px 15px; font-size: 14px; color: #fff; height: 48px;}
+.page-mailchimpsync-log .blsl-list-tblsec table tbody td { height: 55px; padding: 0px 15px; font-size: 12px; color: #999999;}
+.mailchampk-lastsyn-date{ font-weight:bold; color:#4d4d4d; }
+.tbl-mailchimpsync-logs table td .blue-btn { background: #50C8FF; color: #fff; width: auto; padding: 0 15px; min-width: inherit; height: 34px; line-height: 34px; font-size: 14px; display: inline-flex;}
+#brnd_preloader {border: 5px solid #ddd; border-radius: 50%; border-top: 5px solid #50C8FE; border-bottom: 5px solid #50c8ff; width: 35px; height: 35px; -webkit-animation: spin 2s linear infinite; animation: spin 1.5s linear infinite; display: inline-block; vertical-align: middle;}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/*userlog page start here*/
+.sync-time {display: inline-block;border-right: 1px solid #b3b3b3; padding-top: 35px; padding-bottom: 35px; width: auto; max-width: 245px;}
+.sync-time h3 { margin: 0; font-weight: 700; font-size: 18px; color: #494949;}
+.sync-time h3 span { display: inline-block;  width: 100%;}
+.page-mailchimp-userlog .page-content-top div { display: inline-block;}
+.page-mailchimp-userlog  .page-content-top { padding-top: 0; padding-bottom: 0;}
+.tab-log-menu {display: inline-block; width: auto; min-width: 450px;}
+.tab-log-menu ul { padding: 0 15px;}
+.tab-log-menu ul li{ display: inline-block; width: 100%; max-width: 120px; margin: 0 10px;}
+.tab-log-menu .nav-tabs  { border:0;}
+.tab-log-menu .nav-tabs > li > a { padding: 0; width: 100%; text-align: center; font-size: 14px; color: #c7c7c7; position: relative;}
+.nav > li > a:focus, .nav > li > a:hover{ background-color: transparent;border:0px;}
+.tab-log-menu .nav-tabs > li.active > a  { border:none; font-weight: 700; color: #50c8ff;}
+.tab-log-menu .nav-tabs > li.active > a:after {position: absolute; width: 100%; content: ""; height: 3px; bottom: -20px; left: 0; background: #50c8ff;}
+.search-box-log {display: inline-block; width: auto; position: relative;}
+.search-box-log input {display: inline-block;width: 351px!important; border:1px solid #999999;height: 40px; line-height: 40px; padding:  0 15px; vertical-align: middle;}
+.bl-search {display: inline-block; background:none; border:none; width: 40px; height: 40px; padding: 0; vertical-align: middle; margin-left: -10px;}
+.page-mailchimp-userlog .blsl-list-tblsec table thead th { padding: 0px 15px; font-size: 14px; color: #fff; height: 48px;}
+/* .page-mailchimp-userlog .blsl-list-tblsec table tbody td { height: 55px; padding: 0px 15px; font-size: 14px; color: #999999;} */
+
+.page-mailchimp-userlog .blsl-list-tblsec table tbody td {
+  height: 40px;
+  /* padding: 0px 10px; */
+  font-size: 12px;
+  color: #999999;
+  word-break: break-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.status-fail { color: #f03232;}
+.form-element input[disabled] { background: #eee;}
+/*userlog page end here*/
+/*modification 18-march*/
+.page-content-top div.search-box-log {
+	margin-left: 25px;
+}
+.respo {
+	float: left;
+	width: 100%;
+}
+
+#no-more-tables .tablesorter-header .tablesorter-header-inner{ background-image: url('../images/shift_or_sort_down_white.svg'),url('../images/shift_or_sort_up_white.svg');  background-repeat: no-repeat;   background-position: right 4px, right bottom; display: inline-block; padding-right: 28px; background-size: 25px; }
+#no-more-tables .tablesorter-header.tablesorter-headerAsc .tablesorter-header-inner{ background-image: url('../images/shift_or_sort_down_white.svg'); background-position: right -2px;  }
+#no-more-tables .tablesorter-header.tablesorter-headerDesc .tablesorter-header-inner{ background-image: url('../images/shift_or_sort_up_white.svg'); background-position: right -2px;  }
+#no-more-tables .tablesorter-header.sorter-false .tablesorter-header-inner{ background:none;  }
+
+.note-red {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ff0000;
+}
+.mailchimp-top-note {
+  font-size: 14px;
+  color: #999;
+  font-weight: 400;
+  line-height: 22px;
+  padding: 12px 35px;
+}
+a.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+.dataTables_wrapper .dataTables_paginate {
+  /* float: center; */
+  position: absolute;
+  text-align: right;
+  padding-top: 0.50em;
+  /* margin-left:700px; */
+  
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  box-sizing: border-box;
+  display: inline-block;
+  min-width: 1.5em;
+  padding: 0.5em 1em;
+  margin-left: 2px;
+  text-align: center;
+  text-decoration: none !important;
+  cursor: pointer;
+  *cursor: hand;
+  color: #333 !important;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+  color: #333 !important;
+  border: 1px solid #979797;
+  background-color: white;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(100%, #dcdcdc));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, white 0%, #dcdcdc 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, white 0%, #dcdcdc 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, white 0%, #dcdcdc 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, white 0%, #dcdcdc 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(to bottom, white 0%, #dcdcdc 100%);
+  /* W3C */
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  cursor: default;
+  color: #666 !important;
+  border: 1px solid transparent;
+  background: transparent;
+  box-shadow: none;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: white !important;
+  border: 1px solid #111;
+  background-color: #585858;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #585858), color-stop(100%, #111));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #585858 0%, #111 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #585858 0%, #111 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #585858 0%, #111 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #585858 0%, #111 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(to bottom, #585858 0%, #111 100%);
+  /* W3C */
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:active {
+  outline: none;
+  background-color: #2b2b2b;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b2b2b), color-stop(100%, #0c0c0c));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -moz-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+  /* FF3.6+ */
+  background: -ms-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+  /* IE10+ */
+  background: -o-linear-gradient(top, #2b2b2b 0%, #0c0c0c 100%);
+  /* Opera 11.10+ */
+  background: linear-gradient(to bottom, #2b2b2b 0%, #0c0c0c 100%);
+  /* W3C */
+  box-shadow: inset 0 0 3px #111;
+}
+.dataTables_wrapper .dataTables_paginate .ellipsis {
+  padding: 0 1em;
+}
+.paging {
+  display: flex;
+   position: relative;
+   justify-content: center;
+   border: none;
+}

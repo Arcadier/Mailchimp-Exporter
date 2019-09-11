@@ -1,0 +1,61 @@
+@media(min-width: 1259px) and (max-width: 1495px){
+	.sync-time , .search-box-log{
+		max-width: 25%;
+	}
+	.search-box-log input{
+		width:calc(100% - 40px);
+	}
+
+}
+@media(min-width: 768px) and (max-width: 1258px){
+	.sync-time {
+		max-width: 100%;
+		border:none;
+		width: 100%;
+		text-align: center;
+		padding: 0;
+		margin-bottom: 15px;
+	}
+	.page-mailchimp-userlog .page-content-top{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.tab-log-menu {
+		margin-bottom: 15px;
+	}
+	.search-box-log{
+		width: 100%;
+		text-align: center;
+	}
+	.tab-log-menu .nav-tabs > li.active > a::after {
+		bottom: -10px;
+	}
+	.tbl-mailchimpsync-logs {
+		width: 100%;
+		overflow: scroll;
+	}
+}
+@media(max-width:767px ){
+	.sync-time {
+		max-width: 100%;
+		border:none;
+		width: 100%;
+		text-align: center;
+		padding: 0;
+		margin-bottom: 15px;
+	}
+	.page-mailchimp-userlog .page-content-top{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	.tab-log-menu {
+		margin-bottom: 15px;
+	}
+	.search-box-log{
+		width: 100%;
+		text-align: center;
+	}
+	.tab-log-menu .nav-tabs > li.active > a::after {
+		bottom: -10px;
+	}
+}

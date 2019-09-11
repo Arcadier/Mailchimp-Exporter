@@ -1,0 +1,9 @@
+.honestbee-shipping-opt { max-width: 450px; width: 100%; float: right; background: #fff; padding: 15px 15px;}
+.honestbee-shipping-opt .item-form-group label { display: inline-block; width: 48%;}
+.honestbee-shipping-opt .item-form-group select { display: inline-block; width: 48%;}
+.honestbee-shipping-opt .item-form-group { min-height: auto;}
+.honestBee{ display: inline-block;  width: 100%;}
+.honestBee .honestbee-radio-list {  display: inline-block;  width: 100%;        border:1px solid #d2d2d2;   margin-top: 15px;   padding: 15px;}
+.honestBee .honestbee-radio-list label {    float: right;   width: calc(100% - 55px);   margin: 0;}
+.honestBee .honestbee-radio-list  input {   float: left;    width: 25px;    height: auto;}
+.honestBee .honestbee-radio-list.checked{   background: #d2d2d2;    }
