@@ -10,6 +10,34 @@
     var merchantID;
     var timezone_offset_minutes = new Date().getTimezoneOffset();
     timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
+    var mailchimpToggle = document.getElementById('myonoffswitch');
+
+    mailchimpToggle.addEventListener('change', () => {
+        saveStatus(mailchimpToggle.checked);
+      });
+
+      
+    function saveStatus(toggleStatus) {
+    var data = { 'userId': userId, 'status': toggleStatus };
+        var apiUrl = packagePath + '/package_switch.php';
+    $.ajax({
+        url: apiUrl,          
+        method: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        success: function(response) {
+            if(toggleStatus == 1){
+            toastr.success('Mailchimp plugin is enabled.');
+            }else { toastr.success('Mailchimp plugin is disabled.');}
+            
+        },
+        error: function (jqXHR, status, err) {
+                toastr.error('---');
+        }
+    });
+    }
+
+
   
     function setTimezoneName() {
         var data = { 'timezone':  timezone_offset_minutes };
@@ -110,11 +138,10 @@
                 {
                     sync.Disable = true;
                     }
-
         }
     $(document).ready(function() {
         if ($('#client-secret').val() == ' '){
-            console.log('yea h yeah');
+            console.log('Export Disabled');
             $('#sync').addClass('disabled');
         }
         // DisableButton();
@@ -124,7 +151,23 @@
             localStorage.setItem("SyncSuccess", "No")
         }
         getMarketplaceCustomFields(function(result) {
+
             $.each(result, function(index, cf) {
+
+                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    code = cf.Code;
+                   var mailchimp_status = cf.Values[0];
+                   if (mailchimp_status == 'true') {
+                    mailchimpToggle.checked = true;
+                    jQuery('#mailchampkey-frm-sec').slideDown();
+                
+                    }
+                    else {
+                    mailchimpToggle.checked = false;
+                    jQuery('#mailchampkey-frm-sec').slideUp();  
+                   }    
+               }
+
                 if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
                     var code = cf.Code;
                     var clientSecret = cf.Values[0];

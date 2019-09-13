@@ -11,7 +11,7 @@
     var customFieldPrefix = packageId.replace(/-/g, "");
     var userId = $('#userGuid').val();
     var getPackageCustomFieldCache = userId + "_" + packageId;
-    var clientsecret;
+    var clientsecret,mailchimp_status;
     var merchantID = '';
     var consumerID = '';
 
@@ -115,38 +115,60 @@
     }
 
     function update_consumers() {
-        var data = { 'email': $('#nemail').val(), 'username': $('.singfrm-txtbox').val(), 'userId': userId, 'timezone':  timezone_offset_minutes};
-        var apiUrl = packagePath + '/update_consumer_info.php';
-        $.ajax({
-            url: apiUrl, 
-            type: 'POST',
-            data: JSON.stringify(data),
-            success: function(result) {
-            }
-        });
-
-    }
-
-function update_basic_info(){
         getMarketplaceCustomFields(function(result) {
             $.each(result, function(index, cf) {
                 if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
                     var code = cf.Code;
                     clientsecret = cf.Values[0];                          
                 }
+                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    mailchimp_status = cf.Values[0];   
+                    console.log('stat ' + mailchimp_status);
+                }
             })
-        var data = { 'firstname': $('#input-firstName').val(), 'lastname': $('#input-lastName').val(), 'contactnumber': $('#input-contactNumber').val(), 'email' : $('#notification-email').val(), 'userId': userId, 'client-secret': clientsecret, 'consumerID' : consumerID, 'merchantID': merchantID};
-        var apiUrl = packagePath + '/update_basic_info.php';
-        $.ajax({
-            url: apiUrl, 
-            type: 'POST',
-            data: JSON.stringify(data),
-            success: function(result) {
-            }
-        });
 
         });
+
+        if (mailchimp_status == 'true') {
+            console.log('mailchimp is on');
+            var data = { 'email': $('#nemail').val(), 'username': $('.singfrm-txtbox').val(), 'userId': userId, 'timezone':  timezone_offset_minutes};
+            var apiUrl = packagePath + '/update_consumer_info.php';
+            $.ajax({
+                url: apiUrl, 
+                type: 'POST',
+                data: JSON.stringify(data),
+                success: function(result) {
+                }
+            });
+        }
 }
+
+function update_basic_info(){   
+        getMarketplaceCustomFields(function(result) {
+            $.each(result, function(index, cf) {
+                if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    clientsecret = cf.Values[0];                          
+                }
+                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    mailchimp_status = cf.Values[0];   
+                }
+            })
+            if (mailchimp_status == 'true') { 
+                var data = { 'firstname': $('#input-firstName').val(), 'lastname': $('#input-lastName').val(), 'contactnumber': $('#input-contactNumber').val(), 'email' : $('#notification-email').val(), 'userId': userId, 'client-secret': clientsecret, 'consumerID' : consumerID, 'merchantID': merchantID};
+                var apiUrl = packagePath + '/update_basic_info.php';
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    success: function(result) {
+                    }
+                });
+            }   
+        });
+    }
 
  function update_address(){
         getMarketplaceCustomFields(function(result) {
@@ -155,22 +177,49 @@ function update_basic_info(){
                     var code = cf.Code;
                     clientsecret = cf.Values[0];                        
                 }
+
+                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    mailchimp_status = cf.Values[0];   
+                }
+
             })
+            if (mailchimp_status == 'true') {    
+                var data = { 'address': $('#myaddress').val(), 'country': $('#country').val(), 'city': $('#city').val(), 'state' : $('#state').val(), 'zip' : $('#postal-code').val(), 'userId': userId, 'client-secret': clientsecret, 'email': $('#notification-email').val() };
+                var apiUrl = packagePath + '/update_address.php';
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    success: function(result) {
+                    }
+                });
+             }
 
-        var data = { 'address': $('#myaddress').val(), 'country': $('#country').val(), 'city': $('#city').val(), 'state' : $('#state').val(), 'zip' : $('#postal-code').val(), 'userId': userId, 'client-secret': clientsecret, 'email': $('#notification-email').val() };
-        var apiUrl = packagePath + '/update_address.php';
-        $.ajax({
-            url: apiUrl, 
-            type: 'POST',
-            data: JSON.stringify(data),
-            success: function(result) {
-            }
-        });
+         });
 
-        });
+}
 
-    }
+
+
     $(document).ready(function() {
+
+        getMarketplaceCustomFields(function(result) {
+            $.each(result, function(index, cf) {
+                if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    clientsecret = cf.Values[0];                        
+                }
+
+                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    var code = cf.Code;
+                    mailchimp_status = cf.Values[0];   
+                }
+                console.log(mailchimp_status);
+            })
+           
+         });
+
         
         var sellerSettings = '/user/marketplace/seller-settings';
         if (pathname.indexOf(sellerSettings) > -1) {
@@ -189,18 +238,35 @@ function update_basic_info(){
          }
    
     $('#next-tab').click(function() {
-        update_basic_info(); // for basic infor
-                
+        if (mailchimp_status == 'true') { 
+            console.log('mailchimp is on');
+            update_basic_info(); // for basic infor
+        }else {
+            console.log('mailchimp is off');
+        }
+               
     });
 
     $('.btn-area .my-btn').on("click", function () {
-        update_address();
+        if (mailchimp_status == 'true') { 
+            console.log('mailchimp is on');
+            update_address();
+        }else {
+            console.log('mailchimp is off');
+        }
     });
 
     //add new consumers
      $('#account-submit').on("click", function () {
-        update_consumers();
+         console.log(mailchimp_status);
+       if (mailchimp_status == 'true') { 
+            console.log('mailchimp is on');
+            update_consumers();
+       }else {
+            console.log('mailchimp is off');
+        }
      });
+     
          
  });
    

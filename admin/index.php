@@ -110,6 +110,7 @@ if (!$licence->isValid()) {
         
     
           jQuery(document).ready(function() {
+           // getSyncResults();
 
         jQuery(".panel-box-title").click(function() {
             jQuery(this).parents('.panel-box').toggleClass('active');
@@ -125,7 +126,7 @@ if (!$licence->isValid()) {
         });
 
         /*nice scroll */
-        jQuery(".sidebar").niceScroll({ cursorcolor: "#000", cursorwidth: "6px", cursorborderradius: "5px", cursorborder: "1px solid transparent", touchbehavior: true, preventmultitouchscrolling: false, enablekeyboard: true });
+        // jQuery(".sidebar").niceScroll({ cursorcolor: "#000", cursorwidth: "6px", cursorborderradius: "5px", cursorborder: "1px solid transparent", touchbehavior: true, preventmultitouchscrolling: false, enablekeyboard: true });
 
         jQuery(".sidebar .section-links li > a").click(function() {
             jQuery(".sidebar .section-links li").removeClass('active');
@@ -145,16 +146,11 @@ if (!$licence->isValid()) {
                 }
         });
         
-        
-        
+    
     });
     $(window).load(function(){
-              
-        getSyncResults();
-
-
+         getSyncResults();
             if($('#temp-fname').val() && $('#temp-lname').val() ){
-
                 $(".form-area .btn-black-mdx").attr("id" , "edit");
                 setTimeout(function(){$(".form-area .btn-black-mdx").addClass("editView");},500);
                 $( ".form-area #edit" ).html( "Edit" );
@@ -183,7 +179,7 @@ if (!$licence->isValid()) {
                 $(".form-area .btn-black-mdx").removeClass("editView");
             });
             $("body").on("click" , "#save" , function(){ 
-                if($('#temp-lname').val() &&$('#temp-fname').val() ){
+                if($('#temp-lname').val() && $('#temp-fname').val() ){
                     $("#temp-lname").attr("disabled", true);
                     $("#temp-fname").attr("disabled", true);
                     $(".form-area .btn-black-mdx").attr("id" , "edit");
@@ -196,7 +192,7 @@ if (!$licence->isValid()) {
                 }           
             });
 
-        });
+    });
         function DeleteCustomMethod(obj) {
             jQuery("#cover").fadeIn();
             jQuery(".popup-area.item-remove-popup").fadeIn();

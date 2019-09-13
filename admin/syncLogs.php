@@ -26,7 +26,7 @@ function getSecretKey(){
             error_log('Mailchimp API KEY ' . $clientsecret);
         }
         if ($clientsecret == ''){
-            $clientsecret =  '';
+            $clientsecret =  '120f052214655d44a43687ab08b30f3b-us3';
         }
     }
     return $clientsecret;
@@ -357,7 +357,6 @@ function getSuccessSyncTotalSingleSync() {
     return $total_success;
 }
 
-
 ////////////////////.TAR FILE FUNCTIONS//////////////////////////////
 
 function download_remote_file_with_curl($file_url, $save_to)
@@ -544,11 +543,10 @@ function setRoleToBatch() {  //should be change to setRoleLastRun();
 
 function processUserData($clientSecret,$batch_id,$userType,$dir){
     getTarFile($batch_id,$clientSecret,$userType,$dir);
-    getJSONFile($batch_id,$dir); //this should be removed
-    extractJSONData($batch_id,$dir); //this as well
+    getJSONFile($batch_id,$dir); 
+    extractJSONData($batch_id,$dir); 
     getData($batch_id,$dir);
     setUserToData($batch_id, $dir, $userType); //added function to modify the json data
-    // addRunData($batch_id, $dir);
     error_log('successfully processed the ' .$userType . ' data');
 }
 

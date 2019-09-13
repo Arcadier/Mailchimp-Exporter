@@ -78,7 +78,6 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                     $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
                         foreach($useraddressinfo['Records'] as $address) {
                             $user_address = $address['Line1'];
-                            //handle the exception here if in the absense of $address array
                         }
                         if (in_array('User',$find['Roles']) && count($find['Roles']) == 1){ 
                             $userRole = 'Consumer';
@@ -86,34 +85,33 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                             $userRole = 'Merchant';
                         }
 
-                        $individulData = array(
-                            'email_address' => $find['Email'], 
-                            'status'        => 'subscribed',
-                            'merge_fields'  => array(
-                                'FNAME' =>  array_key_exists('FirstName', $find) ? $find['FirstName'] : $default_firstname,
-                                'LNAME' =>  array_key_exists('LastName', $find) ? $find['LastName'] : $default_lastname,                                                   
-                                'PHONE' =>  array_key_exists('PhoneNumber', $find) ? $find['PhoneNumber'] : '00070817',
-                                'ADDRESS' =>  array(
-                                'addr1' => array_key_exists('Line1', $address) ? $address['Line1'] : 'Address',
-                                'city' =>  array_key_exists('City', $address) ? $address['City'] : 'city',
-                                'state' => array_key_exists('State', $address) ? $address['State'] : 'state',
-                                'zip' => array_key_exists('PostCode', $address) ? $address['PostCode'] : '000',
-                                'country' => array_key_exists('CountryCode', $address) ? $address['CountryCode'] : 'US' ),
-                                'MMERGE6' => $userRole,
-                        )
-                        );
-                        $json_individulData    = json_encode($individulData);     
-                    
+                    $individulData = array(
+                        'email_address' => $find['Email'], 
+                        'status'        => 'subscribed',
+                        'merge_fields'  => array(
+                            'FNAME' =>  array_key_exists('FirstName', $find) ? $find['FirstName'] : $default_firstname,
+                            'LNAME' =>  array_key_exists('LastName', $find) ? $find['LastName'] : $default_lastname,                                                   
+                            'PHONE' =>  array_key_exists('PhoneNumber', $find) ? $find['PhoneNumber'] : '00070817',
+                            'ADDRESS' =>  array(
+                            'addr1' => array_key_exists('Line1', $address) ? $address['Line1'] : 'Address',
+                            'city' =>  array_key_exists('City', $address) ? $address['City'] : 'city',
+                            'state' => array_key_exists('State', $address) ? $address['State'] : 'state',
+                            'zip' => array_key_exists('PostCode', $address) ? $address['PostCode'] : '000',
+                            'country' => array_key_exists('CountryCode', $address) ? $address['CountryCode'] : 'US' ),
+                            'MMERGE6' => $userRole,
+                            )
+                    );
+                    $json_individulData    = json_encode($individulData);     
+                
                     $finalData['operations'][] =
                     array(
-                        "method" => "POST",
-                        "path"   => "/lists/$single_sync_id/members/",
-                        "body"   => $json_individulData
+                    "method" => "POST",
+                    "path"   => "/lists/$single_sync_id/members/",
+                    "body"   => $json_individulData
                     );
             
-                } else { 
-                }
-                }
+                } 
+            }
                 error_log('this is the final data ====== ' . print_r($finalData,true));
                 $api_response_cons = batchSubscribe($finalData, $api_key);
                 error_log('This is for consumers only' . $api_response_cons);    
@@ -243,7 +241,6 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                     $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
                         foreach($useraddressinfo['Records'] as $address) {
                             $user_address = $address['Line1'];
-                            //handle the exception here if in the absens of $address array
                         }
                 
                         $individulData = array(
@@ -270,12 +267,10 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                         "body"   => $json_individulData
                     );
             
-                } else { 
-                }
-                }
-                error_log('this is the final data ====== ' . print_r($finalData,true));
+                } 
+            }
+     
                 $api_response_cons = batchSubscribe($finalData, $api_key);
-                error_log('This is for consumers only' . $api_response_cons);    
                 //test response
                 $api_response_cons = json_decode($api_response_cons,true);
                 $batchID_consumer = $api_response_cons['id'];
