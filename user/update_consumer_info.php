@@ -47,14 +47,19 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
         error_log('Sync id '. $single_sync_id);
     }
 
+    if ($cf['Name'] == 'Mailchimp Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+        $status = $cf['Values'][0];
+        error_log('Stat '. $single_sync_id);
+    }
+
 }
 
 //values of List ID's
 $MailChimp = new MailChimp($clientSecret);
- $mailchimp_result = $MailChimp->get("lists", $clientSecret);
- $merchantID = '';
- $consumerID = '';
- $finalData = [];
+$mailchimp_result = $MailChimp->get("lists", $clientSecret);
+$merchantID = '';
+$consumerID = '';
+$finalData = [];
  foreach($mailchimp_result['lists'] as $list) {
      $name = $list['name'];
      if($name == 'Consumers Test'){
@@ -92,7 +97,10 @@ $data = [
 
 //sync new consumer data
 
-syncMailchimp($data);
+error_log('mc stat ' . $status);
+if($status == 'true') {
+    syncMailchimp($data);
+}
 
     if ($MailChimp->success()) {
 		

@@ -1,9 +1,9 @@
 <?php
-//imclude the dependecies
-  include 'callAPI.php';
-  include 'admin_token.php';   
-  include 'Mailchimp.php';
-  use \DrewM\MailChimp\MailChimp;
+
+include 'callAPI.php';
+include 'admin_token.php';   
+include 'Mailchimp.php';
+use \DrewM\MailChimp\MailChimp;
 
 $admin_token = getAdminToken();
 $customFieldPrefix = getCustomFieldPrefix();
@@ -33,6 +33,10 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
         $single_sync_id = $cf['Values'][0];
         error_log('Sync id '. $single_sync_id);
     }
+    if ($cf['Name'] == 'Mailchimp Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+        $status = $cf['Values'][0];
+        error_log('Stat '. $single_sync_id);
+    }
 }
 
  $MailChimp = new MailChimp($clientsecret);
@@ -50,7 +54,7 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
      if($name == 'Merchants Test'){
         $merchantID = $list['id'];
         error_log('This is merchant List ID ' . $merchantID);
-    }
+     }
  }
 
 $data = [
@@ -66,13 +70,15 @@ $data = [
     'state' => $state,
     'zip' => $zipcode
 ];
+
+if($status == 'true') {
 $api_response_code = listSubscribe($data);
 error_log($api_response_code);
 
 //for consumers
 $api_response_code = listSubscribe1($data);
 error_log($api_response_code);
-
+}
 /**
  * Mailchimp API- List Subscribe added function.In this method we'll look how to add a single member to a list using the lists/subscribe method.Also, We will cover the different parameters for submitting a new member as well as passing in generic merge field information.
  *
@@ -116,8 +122,6 @@ function listSubscribe(array $data)
 
     return $httpCode;
 }
-
-//function to be optimized , add the listid to the params
 
 function listSubscribe1(array $data)
 {

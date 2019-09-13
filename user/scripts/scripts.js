@@ -124,24 +124,21 @@
                 if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
                     var code = cf.Code;
                     mailchimp_status = cf.Values[0];   
-                    console.log('stat ' + mailchimp_status);
                 }
             })
 
-        });
+                var data = { 'email': $('#nemail').val(), 'username': $('.singfrm-txtbox').val(), 'userId': userId, 'timezone':  timezone_offset_minutes};
+                var apiUrl = packagePath + '/update_consumer_info.php';
+                $.ajax({
+                    url: apiUrl, 
+                    type: 'POST',
+                    data: JSON.stringify(data),
+                    success: function(result) {
+                    }
+                });
+         //  }
 
-        if (mailchimp_status == 'true') {
-            console.log('mailchimp is on');
-            var data = { 'email': $('#nemail').val(), 'username': $('.singfrm-txtbox').val(), 'userId': userId, 'timezone':  timezone_offset_minutes};
-            var apiUrl = packagePath + '/update_consumer_info.php';
-            $.ajax({
-                url: apiUrl, 
-                type: 'POST',
-                data: JSON.stringify(data),
-                success: function(result) {
-                }
-            });
-        }
+        });
 }
 
 function update_basic_info(){   
@@ -156,7 +153,7 @@ function update_basic_info(){
                     mailchimp_status = cf.Values[0];   
                 }
             })
-            if (mailchimp_status == 'true') { 
+           // if (mailchimp_status == 'true') { 
                 var data = { 'firstname': $('#input-firstName').val(), 'lastname': $('#input-lastName').val(), 'contactnumber': $('#input-contactNumber').val(), 'email' : $('#notification-email').val(), 'userId': userId, 'client-secret': clientsecret, 'consumerID' : consumerID, 'merchantID': merchantID};
                 var apiUrl = packagePath + '/update_basic_info.php';
                 $.ajax({
@@ -166,7 +163,7 @@ function update_basic_info(){
                     success: function(result) {
                     }
                 });
-            }   
+           // }   
         });
     }
 
@@ -184,7 +181,7 @@ function update_basic_info(){
                 }
 
             })
-            if (mailchimp_status == 'true') {    
+           // if (mailchimp_status == 'true') {    
                 var data = { 'address': $('#myaddress').val(), 'country': $('#country').val(), 'city': $('#city').val(), 'state' : $('#state').val(), 'zip' : $('#postal-code').val(), 'userId': userId, 'client-secret': clientsecret, 'email': $('#notification-email').val() };
                 var apiUrl = packagePath + '/update_address.php';
                 $.ajax({
@@ -194,13 +191,11 @@ function update_basic_info(){
                     success: function(result) {
                     }
                 });
-             }
+            // }
 
          });
 
 }
-
-
 
     $(document).ready(function() {
 
@@ -215,7 +210,7 @@ function update_basic_info(){
                     var code = cf.Code;
                     mailchimp_status = cf.Values[0];   
                 }
-                console.log(mailchimp_status);
+                
             })
            
          });
@@ -238,33 +233,20 @@ function update_basic_info(){
          }
    
     $('#next-tab').click(function() {
-        if (mailchimp_status == 'true') { 
-            console.log('mailchimp is on');
+        
             update_basic_info(); // for basic infor
-        }else {
-            console.log('mailchimp is off');
-        }
-               
+      
     });
 
     $('.btn-area .my-btn').on("click", function () {
-        if (mailchimp_status == 'true') { 
-            console.log('mailchimp is on');
+        
             update_address();
-        }else {
-            console.log('mailchimp is off');
-        }
+      
     });
 
     //add new consumers
      $('#account-submit').on("click", function () {
-         console.log(mailchimp_status);
-       if (mailchimp_status == 'true') { 
-            console.log('mailchimp is on');
             update_consumers();
-       }else {
-            console.log('mailchimp is off');
-        }
      });
      
          

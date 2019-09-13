@@ -16,7 +16,6 @@
         saveStatus(mailchimpToggle.checked);
       });
 
-      
     function saveStatus(toggleStatus) {
     var data = { 'userId': userId, 'status': toggleStatus };
         var apiUrl = packagePath + '/package_switch.php';
