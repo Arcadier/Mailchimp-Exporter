@@ -16,8 +16,8 @@
 
 ### Installation:
 * Download the repository
-* Extract `admin` , `licence` and `user` folders
-* Compress `admin`, `licence` and `user` together
+* Extract `admin` , `license` and `user` folders
+* Compress `admin`, `license` and `user` together
 * Upload the resulting `.zip` file to your [developer dashboard](https://dashboard.sandbox.arcadier.io/account/login)
 * Create the relevant Custom Fields and/or Custom tables as explained in the [wiki](https://github.com/Arcadier/Mailchimp-Exporter/wiki)
 * Access the `Admin Portal` of your [sandbox marketplace](https://api.arcadier.com/sandbox-marketplace).
