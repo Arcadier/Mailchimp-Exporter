@@ -9,7 +9,7 @@
       <div class="gutter-wrapper">
         <div class="page-topnav" style="height: 5px;">
           <div class="float">
-            <a class="btn-info-plug-in" href="https://arcadier.zendesk.com/hc/en-us/articles/360025607493" target="_blank" >Need Help? Click Here</a>
+            <a class="btn-info-plug-in" href="https://arcadier.zendesk.com/hc/en-us/articles/360025607493" target="_blank" >How to use this Plug-In?</a>
           </div>
         </div>
         <div class="panel-box">
