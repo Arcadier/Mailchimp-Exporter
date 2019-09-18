@@ -36,8 +36,6 @@
     });
     }
 
-
-  
     function setTimezoneName() {
         var data = { 'timezone':  timezone_offset_minutes };
         var apiUrl = packagePath + '/mailchimp_synclog.php';
@@ -128,16 +126,17 @@
         });
     }
 
-    function DisableButton()
+    function DisableButton(){
+    var sync = document.getElementById('sync');
+    var apikey = document.getElementById('client-secret');
+    var sync = document.getElementById('sync');
+        if ( apikey.value.length = 0)
         {
-            var sync = document.getElementById('sync');
-            var apikey = document.getElementById('client-secret');
-            var sync = document.getElementById('sync');
-                if ( apikey.value.length = 0)
-                {
-                    sync.Disable = true;
-                    }
+            sync.Disable = true;
         }
+    }
+
+
     $(document).ready(function() {
         if ($('#client-secret').val() == ' '){
             console.log('Export Disabled');

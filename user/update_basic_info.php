@@ -86,8 +86,8 @@ error_log($api_response_code);
  */
 function listSubscribe(array $data)
 {
-    $apiKey = $data['apikey'];//your API key goes here
-    $listId = $data['singleID'];// your trageted list ID
+    $apiKey = $data['apikey'];
+    $listId = $data['singleID'];
 
     $memberId   = md5(strtolower($data['email']));
     $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);

@@ -241,7 +241,6 @@ function update_basic_info(){
     $('.btn-area .my-btn').on("click", function () {
         
             update_address();
-      
     });
 
     //add new consumers

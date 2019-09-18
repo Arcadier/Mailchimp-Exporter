@@ -35,7 +35,6 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
 
     if ($cf['Name'] == 'Default Lastname' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $default_lastname = $cf['Values'][0];
-       
     }
 
     if ($cf['Name'] == 'Default Firstname' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {

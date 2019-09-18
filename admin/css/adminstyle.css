@@ -14,18 +14,3 @@
 .template-sidebar .section-links li.item-lng.active .sm-submenu.submenu-devapp { background: url('../images/white-dev-apps.svg')no-repeat;}
 .template-sidebar .section-links li.item-lng .sm-submenu.submenu-devapp { background: url('../images/black-dev-apps.svg')no-repeat;}
 /* End Delivery Option setting page*/
-.btn-info-plug-in {
-    color: #50c8ff;
-    display: block;
-    height: 30px;
-    text-align: right;
-    width: 190px;
-    text-decoration: none;
-    font-weight: 600;
-    font-family: 'Open Sans';
-}
-
-.float {
-    float: right;
-}
-

@@ -1,0 +1,1 @@
+[{"status_code":400,"operation_id":"merchant","response":"{\"type\":\"http:\/\/developer.mailchimp.com\/documentation\/mailchimp\/guides\/error-glossary\/\",\"title\":\"Member Exists\",\"status\":400,\"detail\":\"mhajoy10@gmail.com is already a list member. Use PUT to insert or update list members.\",\"instance\":\"\"}","run_no":"33"}]
