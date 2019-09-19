@@ -34,9 +34,8 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
 
     if ($cf['Name'] == 'Mailchimp Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $status = $cf['Values'][0];
-        error_log('Stat '. $single_sync_id);
+        error_log('Stat '. $status);
     }
-
 
 }
 
@@ -44,8 +43,7 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
  $mailchimp_result = $MailChimp->get("lists", $clientSecret);
  $merchantID = '';
  $consumerID = '';
-
- error_log($mailchimp_result);
+ 
 
  foreach($mailchimp_result['lists'] as $list) {
      $name = $list['name'];

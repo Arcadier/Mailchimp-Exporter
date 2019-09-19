@@ -138,7 +138,11 @@
 
 
     $(document).ready(function() {
-        if ($('#client-secret').val() == ' '){
+
+        //plugin status default value
+        mailchimpToggle.checked = false;
+
+        if ($('#client-secret').val() == ''){
             console.log('Export Disabled');
             $('#sync').addClass('disabled');
         }
