@@ -16,7 +16,7 @@
           <div class="page-content-top">
             <div><i class="icon icon-mailchimp icon-3x"></i></div>
             <div>
-              <h3>MailChimp Export Logs</h3>
+              <h3>Mailchimp Export Logs</h3>
             </div>
           </div>
           <?php 

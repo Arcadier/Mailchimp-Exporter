@@ -126,13 +126,40 @@ $account_type =  str_replace('"', '', $account_type);
 
 else { //if the account is paid /premium, run the normal function
 
+//02/18/21 - in case the user upgraded the plan, update the single sync status into '2'
+//4. Save the current audience ID to customfields -  Single Sync ID;  set the Single Sync Status to 1;
+            //Save the list ID's to customfields 
+            $single_sync_id='';
+            $single_sync_status ='';
+            foreach ($packageCustomFields as $cf) {
+ 
+                if ($cf['Name'] == 'Single Sync Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+                    $single_sync_status = $cf['Code'];     
+                }
+                
+            }
+            $data = [
+                'CustomFields' => [
+                    [
+                        'Code' =>  $single_sync_status,
+                        'Values' => ['2'],
+                    ],
+            
+                ],
+            ];
+            $id =  $marketplaceInfo['ID'];
+            $url = $baseUrl . '/api/v2/marketplaces/';
+            $result = callAPI("POST", $admin_token['access_token'], $url, $data);
+
+            echo json_encode(['update sync stat' => $result]);
+
     $mailchimp_list = $MailChimp->get("lists", $clientSecret);
         foreach($mailchimp_list['lists'] as $lists) {
                 $name = $lists['name'];
-                if($name == 'Consumers Test'){
+                if($name == 'Consumers'){
                     $cons_id_exists = true;
                 }
-            if($name == 'Merchants Test') {
+            if($name == 'Merchants') {
                     $merch_id_exists = true;
                 }
                     
@@ -146,7 +173,7 @@ else { //if the account is paid /premium, run the normal function
             //CREATE LIST FOR CONSUMERS -- =============================================================================================================================
               // $MailChimp = new MailChimp($api_key);
                $mailchimp_new_list_data = array(
-                   "name"             => "Consumers Test",
+                   "name"             => "Consumers",
                    "contact"          => array(
                    "company" => "Arcadier",
                    "address1" => "aa",
@@ -154,7 +181,7 @@ else { //if the account is paid /premium, run the normal function
                    "city" => "aa",
                    "state" =>"aa",
                    "zip"=>"111",
-                   "country" =>"Philippines",
+                   "country" =>"Set Country",
                    "phone"=>"33332",  
                ),
                
@@ -179,6 +206,7 @@ else { //if the account is paid /premium, run the normal function
                }
                $consumers_list_id = $mailchimp_result['id'];
                error_log('This is the consumers LIST ID ' . $consumers_list_id);
+               echo json_encode(['consumer id' =>  $consumers_list_id]);
    
        }
  
@@ -190,7 +218,7 @@ else { //if the account is paid /premium, run the normal function
    else {
     
 	$mailchimp_new_list_data = array(
-			"name"             => "Merchants Test",
+			"name"             => "Merchants",
 			"contact"          => array(
 			"company" => "Arcadier",
 			"address1" => "aa",
@@ -198,7 +226,7 @@ else { //if the account is paid /premium, run the normal function
 			"city" => "aa",
 			"state" =>"aa",
 			"zip"=>"111",
-			"country" => "Philippines",
+			"country" => "Set Country",
 			"phone"=>"33332",  
 		),
 		
@@ -222,6 +250,7 @@ else { //if the account is paid /premium, run the normal function
    }
     $merchants_list_id = $mailchimp_result['id'];
     error_log('This is the merchants LIST ID ' . $merchants_list_id);
+    echo json_encode(['merchant id' =>  $merchants_list_id]);
 
 }
  //Save the list ID's to customfields 

@@ -1,6 +1,7 @@
 <!-- begin header -->
 <link href="css/adminstyle.css" rel="stylesheet" type="text/css">
 <link href="css/mailchimp.css" rel="stylesheet" type="text/css">
+
 <!-- end header -->
 <?php
 require '../license/license.php';
@@ -23,8 +24,8 @@ if (!$licence->isValid()) {
             <i class="icon icon-mailchimp icon-3x"></i>
         </div>
         <div>
-            <p>Would you like to activate MailChimp for your marketplace? </p>
-            <span>Easily export your marketplace user list to MailChimp</span>
+            <p>Would you like to activate Mailchimp for your marketplace? </p>
+            <span>Easily export your marketplace user list to Mailchimp</span>
     </div>
                 
         <div class="private-setting-switch">
@@ -39,7 +40,7 @@ if (!$licence->isValid()) {
                 
 </div>
         <div class="mailchimp-top-note">
-            <div><span class="note-red">Please note:</span> This plug-in requires a MailChimp subscription plan of "Essential" or higher to work as intended.</div>
+            <div><span class="note-red">Please note:</span> This plug-in requires a Mailchimp subscription plan of "Essential" or higher to work as intended.</div>
                  <div>Click on the info icon for more information.</div>
            </div>
         </div>
@@ -48,7 +49,7 @@ if (!$licence->isValid()) {
                 <div class="form-element">
                   <label for="client-secret">API Key <a href="https://support.arcadier.com/hc/en-us/articles/360025607493" target="_blank"><span><img src="images/info.svg"></span></a></label>
                   <input type="text" name="client-secret" id="client-secret" class="txt">
-                  <div class="pull-right btn-area auto"><a href="https://mailchimp.com/" target="_blank" class="btn-blue">Login to MailChimp</a></div>
+                  <div class="pull-right btn-area auto"><a href="https://mailchimp.com/" target="_blank" class="btn-blue">Login to Mailchimp</a></div>
                 </div>
                 <div class="form-element">
                     <div class="user-info-field">
@@ -112,6 +113,11 @@ if (!$licence->isValid()) {
                 </div>
             </div>
  <!-- begin footer -->
+ 
+     <!-- <script type="text/javascript" src="https://bootstrap.arcadier.com/adminportal/js/custom-nicescroll.js"></script> -->
+     <!-- <script type="text/javascript" src="scripts/package.js"></script> -->
+    <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+    
  <script>
         
     
@@ -218,7 +224,6 @@ if (!$licence->isValid()) {
             $("#temp-lname").attr("disabled", false);
             $("#temp-fname").attr("disabled", false);
         }
-        
         function mlchamplist_sync(x)
         {
             jQuery(x).css('background-color','#999');
@@ -256,7 +261,7 @@ if (!$licence->isValid()) {
             $isSingleSync =  getSyncStatus();
             error_log('sync stats ' . $isSingleSync);
             ?> 
-            var success = <?php if ($isSingleSync == 0) {
+            var success = <?php if ($isSingleSync == '2') {
             echo getSuccessSyncTotal(); }
             else { echo getSuccessSyncTotalSingleSync();
             }
@@ -266,9 +271,9 @@ if (!$licence->isValid()) {
             }
             document.getElementById("success").innerHTML = success; 
 
-            var error = <?php if ($isSingleSync == 0) {
+            var error = <?php if ($isSingleSync == '2') {
                 echo getFailedSyncTotal(); }
-                else if($isSingleSync == 1) {
+                else if($isSingleSync == '1') {
                     echo getFailedSyncTotalSingleSync();
                 }else {
                     echo 0;
@@ -279,9 +284,9 @@ if (!$licence->isValid()) {
             }
             document.getElementById("error").innerHTML = error; 
 
-            var total =  <?php if ($isSingleSync == 0) {
+            var total =  <?php if ($isSingleSync == '2') {
                  echo getOperationTotal(); }
-                    elseif($isSingleSync == 1) { echo getOperationTotalSingleSync();
+                    elseif($isSingleSync == '1') { echo getOperationTotalSingleSync();
                      }else {
                          echo 0;
                      }
@@ -293,8 +298,8 @@ if (!$licence->isValid()) {
         }
 
             </script>    
-            <script type="text/javascript" src="http://bootstrap.arcadier.com/adminportal/js/custom-nicescroll.js"></script>
+          
             <script type="text/javascript" src="scripts/package.js"></script>
-            <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+   
             <!-- end footer -->        
         

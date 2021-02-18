@@ -101,7 +101,8 @@
 
 
 .page-mailchimpsync-log .blsl-list-tblsec table thead th { padding: 0px 15px; font-size: 14px; color: #fff; height: 48px;}
-.page-mailchimpsync-log .blsl-list-tblsec table tbody td { height: 55px; padding: 0px 15px; font-size: 12px; color: #999999;}
+.page-mailchimpsync-log .blsl-list-tblsec table tbody td { height: 55px; padding: 0px 15px; font-size: 12px; color: #999999; word-break: break-word;
+  white-space: break-spaces;}
 .mailchampk-lastsyn-date{ font-weight:bold; color:#4d4d4d; }
 .tbl-mailchimpsync-logs table td .blue-btn { background: #50C8FF; color: #fff; width: auto; padding: 0 15px; min-width: inherit; height: 34px; line-height: 34px; font-size: 14px; display: inline-flex;}
 #brnd_preloader {border: 5px solid #ddd; border-radius: 50%; border-top: 5px solid #50C8FE; border-bottom: 5px solid #50c8ff; width: 35px; height: 35px; -webkit-animation: spin 2s linear infinite; animation: spin 1.5s linear infinite; display: inline-block; vertical-align: middle;}

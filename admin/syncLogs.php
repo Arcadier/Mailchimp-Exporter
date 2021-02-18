@@ -117,7 +117,7 @@ function getBatchID_single_sync(){
 
     foreach ($marketplaceInfo['CustomFields'] as $cf) {
         
-        if ($cf['Name'] == 'Single Batch ID' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+        if ($cf['Name'] == 'Single Sync ID' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
             $batch_ID_single = $cf['Values'][0];
             error_log('single sync ID ' . $batch_ID_single);
         }

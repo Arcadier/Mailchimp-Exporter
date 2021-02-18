@@ -33,7 +33,7 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
         $single_sync_id = $cf['Values'][0];
         error_log('Sync id '. $single_sync_id);
     }
-    if ($cf['Name'] == 'Mailchimp Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+    if ($cf['Name'] == 'Single Sync Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $status = $cf['Values'][0];
         error_log('Stat '. $single_sync_id);
     }
@@ -45,17 +45,26 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
  $consumerID = '';
  error_log($mailchimp_result);
 
- foreach($mailchimp_result['lists'] as $list) {
-     $name = $list['name'];
-     if($name == 'Consumers Test'){
-         $consumerID = $list['id'];
-         error_log('This is consumer List ID ' . $consumerID);
+ $mailchimp_account = $MailChimp->get("/", $clientSecret);
+ $account_type =  json_encode($mailchimp_account['pricing_plan_type']);
+
+ $account_type =  str_replace('"', '', $account_type); 
+ echo json_encode(['plan results' => $account_type]);
+ //2. Set condition if the account type is 'forever-free'
+     if ($account_type == 'forever_free') {
+     }else {
+        foreach($mailchimp_result['lists'] as $list) {
+            $name = $list['name'];
+            if($name == 'Consumers'){
+                $consumerID = $list['id'];
+                error_log('This is consumer List ID ' . $consumerID);
+            }
+            if($name == 'Merchants'){
+               $merchantID = $list['id'];
+               error_log('This is merchant List ID ' . $merchantID);
+            }
+        }
      }
-     if($name == 'Merchants Test'){
-        $merchantID = $list['id'];
-        error_log('This is merchant List ID ' . $merchantID);
-     }
- }
 
 $data = [
     'apikey' => $clientsecret,
@@ -71,66 +80,33 @@ $data = [
     'zip' => $zipcode
 ];
 
-if($status == 'true') {
-$api_response_code = listSubscribe($data);
+if($status == 1) { //for free accounts
+$api_response_code = listSubscribe($data, $single_sync_id);
 error_log($api_response_code);
-
-//for consumers
-$api_response_code = listSubscribe1($data);
-error_log($api_response_code);
+}else {
+//for  essential accounts
+//$api_response_code = 
+listSubscribe($data,$merchantID);
+//$api_response_code = 
+listSubscribe($data,$consumerID);
+//error_log($api_response_code);
 }
 /**
- * Mailchimp API- List Subscribe added function.In this method we'll look how to add a single member to a list using the lists/subscribe method.Also, We will cover the different parameters for submitting a new member as well as passing in generic merge field information.
+ * Mailchimp API- List Subscribe added function.In this method we'll look how to add a single member to a list using the lists/subscribe method.Also, 
+ * We will cover the different parameters for submitting a new member as well as passing in generic merge field information.
  *
  * @param array $data Subscribe information Passed.
  *
  * @return mixed
  */
-function listSubscribe(array $data)
+function listSubscribe(array $data, $id)
 {
     $apiKey = $data['apikey'];
-    $listId = $data['singleID'];
+    //$listId = $data['singleID'];
 
     $memberId   = md5(strtolower($data['email']));
     $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
-    $url        = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/' . $memberId;
-    $json       = json_encode([
-        'email_address' => $data['email'],
-        'merge_fields'  => [
-            'ADDRESS' =>  array(
-                'addr1' => $data['main_address'],
-                'city' =>  $data['city'],
-                'state' => $data['state'],
-                'zip' =>   $data['zip'],
-                'country' => $data['country']),
-        ]
-    ]);
-    $ch = curl_init($url);
-    curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $apiKey);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PATCH");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-
-    $result   = curl_exec($ch);
-    echo $result;
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
-
-    return $httpCode;
-}
-
-function listSubscribe1(array $data)
-{
-    $apiKey = $data['apikey'];
-    $listId = $data['singleID'];
-
-    $memberId   = md5(strtolower($data['email']));
-    $dataCenter = substr($apiKey, strpos($apiKey, '-') + 1);
-    $url        = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $listId . '/members/' . $memberId;
+    $url        = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/' . $id . '/members/' . $memberId;
     $json       = json_encode([
         'email_address' => $data['email'],
         'merge_fields'  => [

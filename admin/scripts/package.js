@@ -94,7 +94,8 @@
 
     function saveKeys() {
         var data = {  'clientSecret': $('#client-secret').val(), 'clientId': $('#client-id').val(), 'userId': userId,'firstname': $('#temp-fname').val(), 'lastname': $('#temp-lname').val()};
-         var apiUrl = packagePath + '/save_keys.php';
+        var apiUrl = packagePath + '/save_keys.php';
+        console.log(data);
         $.ajax({
             url: apiUrl,          
             method: 'POST',
@@ -106,7 +107,9 @@
                  $('#sync').removeClass('disabled');
              
             },
-            error: function ($result) {
+            error: function ($result)
+            {
+                console.log($result)
                 toastr.error('Invalid Mailchimp API key supplied');
             }
         });
@@ -137,12 +140,11 @@
     }
 
 
-    $(document).ready(function() {
-
-        //plugin status default value
-        mailchimpToggle.checked = false;
-
-        if ($('#client-secret').val() == ''){
+    $(document).ready(function ()
+    {
+        
+        console.log('packages.js has been loaded');
+        if ($('#client-secret').val() == ' '){
             console.log('Export Disabled');
             $('#sync').addClass('disabled');
         }
@@ -221,15 +223,22 @@
             })
         });
 
-        $('#save').click(function() {
+        
+        // var savebutton = document.getElementById("edit");
+        //     savebutton.onclick = function ()
+        $('#save').on("click", function ()
+        // $('#save').click (function ()
+        {
+            console.log('save has been clicked');
             $('#sync').addClass('disabled');
             if($('#save').text() == 'Save'){
-                saveKeys();
+               saveKeys();
                 //add another condition if mailing lists already exists before calling this function
-                createList();       
+               createList();       
             } 
         });
-        $('#sync').click(function() {
+    // }
+        $('#sync').on("click",function() {
             if ( $('#save').text() == 'Edit' && $('#client-secret').val() == '') {
                 // toastr.error('Please provide a valid API Key.');
             }else {
@@ -238,7 +247,7 @@
          
         });
 
-        $('#sync_log_btn').click(function() {
+        $('#sync_log_btn').on("click",function() {
             setTimezoneName();
         });
 

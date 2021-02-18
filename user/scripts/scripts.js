@@ -12,9 +12,7 @@
     var userId = $('#userGuid').val();
     var getPackageCustomFieldCache = userId + "_" + packageId;
     var clientsecret,mailchimp_status;
-    var merchantID = '';
-    var consumerID = '';
-
+ 
     var timezone_offset_minutes = new Date().getTimezoneOffset();
     timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
     isnext =  false;
@@ -114,53 +112,63 @@
         });
     }
 
-    function update_consumers() {
-        getMarketplaceCustomFields(function(result) {
-            $.each(result, function(index, cf) {
-                if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
-                    var code = cf.Code;
-                    clientsecret = cf.Values[0];                          
-                }
-                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
-                    var code = cf.Code;
-                    mailchimp_status = cf.Values[0];   
-                }
-            })
+    //for new users
+    function update_consumers()
+    {
+        var email = $('#notification-email').val();
+        var lastname = $('#input-lastName').val();
+        var firstname = $('#input-firstName').val(); 
+        var address = $('#myaddress').val();
+        var country = $('#country :selected').text();
+        var state = $('#state').val();
+        var city = $('#city').val();
+        var postcode = $('#postal-code').val();
+        var phone = $('#input-contactNumber').val();
+       
+        var data = {
+            'email': email, 'firstname': firstname, 'lastname': lastname, 'address': address, 'country': country, 'state': state, 'city': city, 'postcode': postcode, 'phone' : phone,
+            'userId': userId, 'timezone': timezone_offset_minutes
+        };
 
-                var data = { 'email': $('#nemail').val(), 'username': $('.singfrm-txtbox').val(), 'userId': userId, 'timezone':  timezone_offset_minutes};
+        console.log(data);
                 var apiUrl = packagePath + '/update_consumer_info.php';
                 $.ajax({
                     url: apiUrl, 
                     type: 'POST',
                     data: JSON.stringify(data),
-                    success: function(result) {
+                    success: function (result)
+                    {
+                        
+                        console.log(JSON.stringify(result));
                     }
+
                 });
          //  }
 
-        });
 }
 
 function update_basic_info(){   
         getMarketplaceCustomFields(function(result) {
             $.each(result, function(index, cf) {
                 if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
-                    var code = cf.Code;
+                   
                     clientsecret = cf.Values[0];                          
                 }
-                if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
-                    var code = cf.Code;
+                if (cf.Name == 'Single Sync Status' && cf.Code.startsWith(customFieldPrefix)) {
+                    
                     mailchimp_status = cf.Values[0];   
                 }
             })
            // if (mailchimp_status == 'true') { 
-                var data = { 'firstname': $('#input-firstName').val(), 'lastname': $('#input-lastName').val(), 'contactnumber': $('#input-contactNumber').val(), 'email' : $('#notification-email').val(), 'userId': userId, 'client-secret': clientsecret, 'consumerID' : consumerID, 'merchantID': merchantID};
+                var data = { 'firstname': $('#input-firstName').val(), 'lastname': $('#input-lastName').val(), 'contactnumber': $('#input-contactNumber').val(), 'email' : $('#notification-email').val(), 'userId': userId};
                 var apiUrl = packagePath + '/update_basic_info.php';
                 $.ajax({
                     url: apiUrl, 
                     type: 'POST',
                     data: JSON.stringify(data),
-                    success: function(result) {
+                    success: function (result)
+                    {
+                        console.log(JSON.stringify(result));
                     }
                 });
            // }   
@@ -197,57 +205,51 @@ function update_basic_info(){
 
 }
 
-    $(document).ready(function() {
+    $(document).ready(function ()
+    {
 
-        getMarketplaceCustomFields(function(result) {
-            $.each(result, function(index, cf) {
+        getMarketplaceCustomFields(function (result)
+        {
+            $.each(result, function (index, cf)
+            {
                 if (cf.Name == 'Mailchimp Client Secret' && cf.Code.startsWith(customFieldPrefix)) {
                     var code = cf.Code;
-                    clientsecret = cf.Values[0];                        
+                    clientsecret = cf.Values[0];
                 }
 
                 if (cf.Name == 'Mailchimp Status' && cf.Code.startsWith(customFieldPrefix)) {
                     var code = cf.Code;
-                    mailchimp_status = cf.Values[0];   
+                    mailchimp_status = cf.Values[0];
                 }
                 
             })
            
-         });
+        });
 
-        
-        var sellerSettings = '/user/marketplace/seller-settings';
-        if (pathname.indexOf(sellerSettings) > -1) {
+        if (pathname.indexOf('/user/marketplace/user-settings') > -1 || pathname.indexOf('/user/marketplace/seller-settings') > -1) {
 
-            //get details
-            var email = $('#notification-email').val();
-  
-            var lastname = $('#input-lastName').val();
-          
-            var firstname = $('#input-firstName').val();
-               
-            var address =  $('#input-contactNumber').val();
-           
-            var phone =     $('#input-seller-location').val();
-         
-         }
-   
-    $('#next-tab').click(function() {
-        
+            console.log('in user settings mailchimp');
+            $('body').on("click", '#profile #next-tab', function ()
+        {
+            console.log('basic info');
+
             update_basic_info(); // for basic infor
       
-    });
+        });
 
-    $('.btn-area .my-btn').on("click", function () {
-        
+        $('body').on("click",'.btn-area .my-btn', function ()
+        {
+            console.log('address');
             update_address();
-    });
-
-    //add new consumers
-     $('#account-submit').on("click", function () {
             update_consumers();
-     });
-     
+        });
+
+        //add new consumers
+        // $('body').on("click", '#address #next-tab',function ()
+        // {
+        //     update_consumers();
+        // });
+    }
          
  });
    

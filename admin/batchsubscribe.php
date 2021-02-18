@@ -21,6 +21,7 @@ $default_firstname = '';
 
 $baseUrl = getMarketplaceBaseUrl();
 $admin_token = getAdminToken();
+$userToken = $_COOKIE["webapitoken"];
 $customFieldPrefix = getCustomFieldPrefix();
 
 // Query to get marketplace id
@@ -61,11 +62,11 @@ $packageCustomFields = callAPI("GET", null, $url, false);
         
         //get address details
         $url = $baseUrl . '/api/v2/users/' . $userId .'/addresses';
-        $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
+        $useraddressinfo = callAPI("GET", $userToken, $url, false);
 
         //get user details
         $url = $baseUrl . '/api/v2/admins/'. $userId . '/users?role=user&ignoreGuest=true&pageSize=100'; //set the ignore guest to true
-        $result = callAPI("GET", $admin_token['access_token'], $url, false);
+        $result = callAPI("GET", $userToken, $url, false);
         error_log('This is log for users api  ' . json_encode($result));
 
         //insert Merchant / Buyer to the same Audience /List
@@ -75,7 +76,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
             foreach($result['Records'] as $find){
                 if (!in_array('Admin',$find['Roles'])){ 
                     $url = $baseUrl . '/api/v2/users/' . $find['ID'] .'/addresses';
-                    $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
+                    $useraddressinfo = callAPI("GET", $userToken, $url, false);
                         foreach($useraddressinfo['Records'] as $address) {
                             $user_address = $address['Line1'];
                         }
@@ -139,7 +140,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                     //     $batch_id_merchant = $cf['Code'];
                     // }
     
-                    if ($cf['Name'] == 'Single Batch ID' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
+                    if ($cf['Name'] == 'Single Sync ID' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
                         $single_id_cons = $cf['Code'];
                     }
     
@@ -174,7 +175,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
     
                 $id =  $marketplaceInfo['ID'];
                 $url = $baseUrl . '/api/v2/marketplaces/';
-                $result = callAPI("POST", $admin_token['access_token'], $url, $data);
+                $result = callAPI("POST", $userToken, $url, $data);
 
                 sleep(6);//delay 3 seconds 
 
@@ -187,7 +188,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
     }
 
 
-
+//paid accounts
     else {
         
             //values of List ID's get the consumer and merchant list ID's
@@ -197,11 +198,11 @@ $packageCustomFields = callAPI("GET", null, $url, false);
             $consumerID = '';
             foreach($mailchimp_result['lists'] as $list) {
                 $name = $list['name'];
-                if($name == 'Consumers Test'){
+                if($name == 'Consumers'){
                     $consumerID = $list['id'];
                     error_log('This is consumer List ID ' . $consumerID);
                 }
-                if($name == 'Merchants Test'){
+                if($name == 'Merchants'){
                     $merchantID = $list['id'];
                     error_log('This is merchant List ID ' . $merchantID);
                 }
@@ -210,14 +211,14 @@ $packageCustomFields = callAPI("GET", null, $url, false);
 
             //for user addresses
             $url = $baseUrl . '/api/v2/users/' . $userId .'/addresses';
-            $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
+            $useraddressinfo = callAPI("GET", $userToken, $url, false);
 
             error_log(json_encode($useraddressinfo));
 
-            // FOR CREATING NEW LISTS TO MAILCHIMP FOR ARCADIER PURPOSE ONLY---------------------FOR CREATING NEW LISTS TO MAILCHIMP ------------------------FOR CREATING NEW LISTS TO MAILCHIMP------------------------------------------------------------------------------------
+            // FOR CREATING NEW LISTS TO MAILCHIMP FOR ARCADIER PURPOSE ONLY---------------------FOR CREATING NEW LISTS TO MAILCHIMP ------
             $url = $baseUrl . '/api/v2/admins/'. $userId . '/users?role=user&ignoreGuest=true&pageSize=100'; //set the ignore guest to true
             error_log('this is the url ' . $url);
-            $result = callAPI("GET", $admin_token['access_token'], $url, false);
+            $result = callAPI("GET", $userToken, $url, false);
             error_log('This is log for users api  ' . json_encode($result));
 
             foreach ($marketplaceInfo['CustomFields'] as $cf) {
@@ -231,14 +232,14 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                 }
 
             }
-            //INSERT USERS TO THE CONSUMERS LISTS ================================INSERT USERS TO USERS LISTS =============================================================== -- WORKING
+            //INSERT USERS TO THE CONSUMERS LISTS
             $api_key = $clientSecret;
             $MailChimp = new MailChimp($api_key);
             $finalData = [];
             foreach($result['Records'] as $find){
                 if (in_array('User',$find['Roles']) && count($find['Roles']) == 1){ 
                     $url = $baseUrl . '/api/v2/users/' . $find['ID'] .'/addresses';
-                    $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
+                    $useraddressinfo = callAPI("GET", $userToken, $url, false);
                         foreach($useraddressinfo['Records'] as $address) {
                             $user_address = $address['Line1'];
                         }
@@ -255,7 +256,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                                 'city' =>  array_key_exists('City', $address) ? $address['City'] : 'city',
                                 'state' => array_key_exists('State', $address) ? $address['State'] : 'state',
                                 'zip' => array_key_exists('PostCode', $address) ? $address['PostCode'] : '000',
-                                'country' => array_key_exists('CountryCode', $address) ? $address['CountryCode'] : 'US' ),
+                                'country' => array_key_exists('CountryCode', $address) ? $address['CountryCode'] : 'US'),
                         )
                         );
                         $json_individulData    = json_encode($individulData);     
@@ -263,7 +264,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                     $finalData['operations'][] =
                     array(
                         "method" => "POST",
-                        "path"   => "/lists/$single_sync_id /members/",
+                        "path"   => "/lists/$consumerID/members/",
                         "body"   => $json_individulData
                     );
             
@@ -278,12 +279,12 @@ $packageCustomFields = callAPI("GET", null, $url, false);
 
                 //*********** */sync all merchant users***********************
                 $url = $baseUrl . '/api/v2/admins/'. $userId . '/users?role=merchant&pageSize=100';
-                $result = callAPI("GET", $admin_token['access_token'], $url, false);
+                $result = callAPI("GET", $userToken, $url, false);
                 error_log('This is log for merchant api  ' . json_encode($result));
                 $finalData = [];
                 foreach($result['Records'] as $find){
                     $url = $baseUrl . '/api/v2/users/' . $find['ID'] .'/addresses';
-                    $useraddressinfo = callAPI("GET", $admin_token['access_token'], $url, false);
+                    $useraddressinfo = callAPI("GET", $userToken, $url, false);
                 
                         foreach($useraddressinfo['Records'] as $address) {
                             $user_address = $address['Line1'];
@@ -309,7 +310,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                         $finalData['operations'][] =
                             array(
                                 "method" => "POST",
-                                "path"   => "/lists/$single_sync_id/members/",
+                                "path"   => "/lists/$merchantID/members/",
                                 "body"   => $json_individulData
                             );
                                 
@@ -320,7 +321,6 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                     $batchID_merchant = $api_response_merch['id'];
                 
                     //getting the batches after it is posted
-
             //added function for last sync
             $mailchimpLastSyncCustomField = '';
             $batch_id_cons = '';
@@ -382,7 +382,7 @@ $packageCustomFields = callAPI("GET", null, $url, false);
 
             $id =  $marketplaceInfo['ID'];
             $url = $baseUrl . '/api/v2/marketplaces/';
-            $result = callAPI("POST", $admin_token['access_token'], $url, $data);
+            $result = callAPI("POST", $userToken, $url, $data);
 
             sleep(3);//delay 3 seconds 
 
