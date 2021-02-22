@@ -43,13 +43,12 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
  $mailchimp_result = $MailChimp->get("lists", $clientsecret);
  $merchantID = '';
  $consumerID = '';
- error_log($mailchimp_result);
-
+ 
  $mailchimp_account = $MailChimp->get("/", $clientSecret);
  $account_type =  json_encode($mailchimp_account['pricing_plan_type']);
 
  $account_type =  str_replace('"', '', $account_type); 
- echo json_encode(['plan results' => $account_type]);
+ 
  //2. Set condition if the account type is 'forever-free'
      if ($account_type == 'forever_free') {
      }else {
@@ -57,11 +56,11 @@ foreach ($marketplaceInfo['CustomFields'] as $cf) {
             $name = $list['name'];
             if($name == 'Consumers'){
                 $consumerID = $list['id'];
-                error_log('This is consumer List ID ' . $consumerID);
+               
             }
             if($name == 'Merchants'){
                $merchantID = $list['id'];
-               error_log('This is merchant List ID ' . $merchantID);
+               
             }
         }
      }
@@ -82,7 +81,6 @@ $data = [
 
 if($status == 1) { //for free accounts
 $api_response_code = listSubscribe($data, $single_sync_id);
-error_log($api_response_code);
 }else {
 //for  essential accounts
 //$api_response_code = 

@@ -11,11 +11,8 @@ $merch_id_exists = false;
 
 //get the API Key
 $clientSecret = $content['clientSecret'];
-error_log( 'API Key from AJAX   '  .json_encode($clientSecret));
 $userId = $content['userId'];
-error_log( 'userid  '  .json_encode($userId));
 $packagePath = $content['packagePath'];
-
 $baseUrl = getMarketplaceBaseUrl();
 $admin_token = getAdminToken();
 $customFieldPrefix = getCustomFieldPrefix();
@@ -51,7 +48,6 @@ $account_type =  str_replace('"', '', $account_type);
             foreach($mailchimp_list['lists'] as $lists) {
                     $name = $lists['name'];
                     $audience_id = $lists['id'];
-                    error_log('audience id ' . $audience_id);
                 
             }
             //4. Save the current audience ID to customfields -  Single Sync ID;  set the Single Sync Status to 1;
@@ -87,21 +83,17 @@ $account_type =  str_replace('"', '', $account_type);
             $url = $baseUrl . '/api/v2/marketplaces/';
             $result = callAPI("POST", $admin_token['access_token'], $url, $data);
 
-            error_log(json_encode($result));
-
             //5. Create new merge fields for the audience to take care the User Role. :)
             //Validate if 'User Role' merge fields exists ?? add the merge field
             //Resource Link https://developer.mailchimp.com/documentation/mailchimp/reference/lists/merge-fields/#%20
        
         //get current fields 
         $merge_fields = $MailChimp->get("lists/$audience_id/merge-fields");
-        error_log('merge list ' . json_encode($merge_fields));
         $user_role = '';
         foreach($merge_fields['merge_fields'] as $lists) {
                 $name = $lists['name'];
                 if($name == 'User Role'){
                     $user_role = true;
-                 error_log('Merge field already exist.');
                  break;
                 } 
             }
@@ -170,7 +162,7 @@ else { //if the account is paid /premium, run the normal function
 
         }
     else { 
-            //CREATE LIST FOR CONSUMERS -- =============================================================================================================================
+            //CREATE LIST FOR CONSUMERS -- 
               // $MailChimp = new MailChimp($api_key);
                $mailchimp_new_list_data = array(
                    "name"             => "Consumers",
@@ -288,29 +280,6 @@ else { //if the account is paid /premium, run the normal function
 
  error_log(json_encode($result));
 
-}
-
-
-// temporary placing this function here
-function batchSubscribe(array $data, $apikey)
-{
-    $auth          = base64_encode('user:' . $apikey);
-    $json_postData = json_encode($data);
-    $ch            = curl_init();
-    $dataCenter    = substr($apikey, strpos($apikey, '-') + 1);
-    $curlopt_url   = 'https://' . $dataCenter . '.api.mailchimp.com/3.0/lists/';
-    curl_setopt($ch, CURLOPT_URL, $curlopt_url);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json',
-        'Authorization: Basic ' . $auth));
-    curl_setopt($ch, CURLOPT_USERAGENT, 'PHP-MCAPI/3.0');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 10);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_postData);
-    $result = curl_exec($ch);
-    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    return $result;
 }
 
 ?>

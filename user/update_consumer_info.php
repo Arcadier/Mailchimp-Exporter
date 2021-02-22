@@ -20,6 +20,7 @@ $country =  $content['country'];
 $city = $content['city'];
 $state =  $content['state'];
 $postcode =  $content['postcode'];
+$usertype =  $content['usertype'];
 
 $clientSecret = '';
 $status = '';
@@ -39,25 +40,20 @@ $single_sync_id = '';
 foreach ($marketplaceInfo['CustomFields'] as $cf) {
     if ($cf['Name'] == 'Mailchimp Client Secret' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $clientSecret = $cf['Values'][0];
-        error_log('API KEY ' . $clientSecret);
+      
     }
 
     if ($cf['Name'] == 'Single Sync ID' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $single_sync_id = $cf['Values'][0];
-        error_log('Sync id '. $single_sync_id);
+       
     }
 
     if ($cf['Name'] == 'Single Sync Status' && substr($cf['Code'], 0, strlen($customFieldPrefix)) == $customFieldPrefix) {
         $status = $cf['Values'][0];
-        error_log('Stat '. $single_sync_id);
+       
     }
 
 }
-
-echo json_encode(['id' => $single_sync_id]);
-echo json_encode(['key' => $clientSecret]);
-
-
 
 //values of List ID's
 $MailChimp = new MailChimp($clientSecret);
@@ -67,10 +63,7 @@ $account_type =  json_encode($mailchimp_account['pricing_plan_type']);
 $account_type =  str_replace('"', '', $account_type); 
 //2. Set condition if the account type is 'forever-free'
     if ($account_type == 'forever_free') {
-
-        echo json_encode(['stat' => $account_type]);
     }
-
 
 else {
     $mailchimp_result = $MailChimp->get("lists", $clientSecret);
@@ -81,11 +74,11 @@ else {
          $name = $list['name'];
          if($name == 'Consumers'){
              $consumerID = $list['id'];
-             error_log('consumer List ID ' . $consumerID);
+          
          }
          if($name == 'Merchants'){
             $merchantID = $list['id'];
-            error_log('merchant List ID ' . $merchantID);
+           
         }
      }
 }
@@ -108,21 +101,46 @@ $data = [
     'state' => $state,
     'zip' => $postcode
 ];
+//cons
+$data_cons= [
+    'clientsecret' => $clientSecret,
+    'listId' => $consumerID,
+    'ID' => $consumerID,
+    'email'     =>  $email,
+    'status'    => 'subscribed',
+    'firstname' =>  $firstname, 
+    'lastname'  =>  $lastname,
+    'phone' => $phone,
+    'address' => $address,
+    'country' => $country,
+    'city' => $city,
+    'state' => $state,
+    'zip' => $postcode
+];
+
+//merchant
+$data_merch = [
+    'clientsecret' => $clientSecret,
+    'listId' => $consumerID,
+    'ID' => $merchantID,
+    'email'     =>  $email,
+    'status'    => 'subscribed',
+    'firstname' =>  $firstname, 
+    'lastname'  =>  $lastname,
+    'phone' => $phone,
+    'address' => $address,
+    'country' => $country,
+    'city' => $city,
+    'state' => $state,
+    'zip' => $postcode
+];
 
 //sync new consumer data
-
-
 if($status == '1' || $status == 1) {
     syncMailchimp($data);
+}else {
+    $usertype == 'consumer' ?  syncMailchimp($data_cons) : syncMailchimp($data_merch);
 }
-
-    // if ($MailChimp->success()) {
-		
-	// } else {
-	// 	// Display error
-    //     error_log('isFailed' . json_encode($MailChimp->getLastResponse()));
-    //     error_log(json_encode($MailChimp.getLastError()));
-    // }
 
 function syncMailchimp(array $data) {
   
@@ -151,17 +169,15 @@ array(
     "path"   => "/lists/" . $data['ID']. "/members/",
     "body"   => $json_individulData
 );
-echo json_encode(['finaldata' => $finalData]);
 
 $api_response_cons = batchSubscribe($finalData, $data['clientsecret']);
-echo json_encode(['result' => $api_response_cons]);
+
 }
 
 //SHOULD ADD ANOTHER CUSTOM FIELD FOR AUTO SYNC PROPERTIES
  //added function for last sync
 
 $mailchimpLastSyncCustomField = '';
-
 
 // Query to get package custom fields
 $url = $baseUrl . '/api/developer-packages/custom-fields?packageId=' . getPackageID();

@@ -208,7 +208,6 @@ $packageCustomFields = callAPI("GET", null, $url, false);
                 }
             }
 
-
             //for user addresses
             $url = $baseUrl . '/api/v2/users/' . $userId .'/addresses';
             $useraddressinfo = callAPI("GET", $userToken, $url, false);
@@ -385,7 +384,6 @@ $packageCustomFields = callAPI("GET", null, $url, false);
             $result = callAPI("POST", $userToken, $url, $data);
 
             sleep(3);//delay 3 seconds 
-
 
             if($batchID_consumer != '') {
                 processUserData($clientSecret, $batchID_merchant, 'merchant', 'responses');

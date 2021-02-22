@@ -114,8 +114,6 @@ if (!$licence->isValid()) {
             </div>
  <!-- begin footer -->
  
-     <!-- <script type="text/javascript" src="https://bootstrap.arcadier.com/adminportal/js/custom-nicescroll.js"></script> -->
-     <!-- <script type="text/javascript" src="scripts/package.js"></script> -->
     <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
     
  <script>

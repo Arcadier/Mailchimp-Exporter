@@ -83,7 +83,6 @@ $id =  $marketplaceInfo['ID'];
 $url = $baseUrl . '/api/v2/marketplaces/';
 $result = callAPI("POST", $admin_token['access_token'], $url, $data);
 
-
 echo json_encode(['result' => $result]);
 ?>
 

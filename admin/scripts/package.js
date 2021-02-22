@@ -109,7 +109,6 @@
             },
             error: function ($result)
             {
-                console.log($result)
                 toastr.error('Invalid Mailchimp API key supplied');
             }
         });
@@ -129,23 +128,11 @@
         });
     }
 
-    function DisableButton(){
-    var sync = document.getElementById('sync');
-    var apikey = document.getElementById('client-secret');
-    var sync = document.getElementById('sync');
-        if ( apikey.value.length = 0)
-        {
-            sync.Disable = true;
-        }
-    }
-
-
+ 
     $(document).ready(function ()
     {
         
-        console.log('packages.js has been loaded');
         if ($('#client-secret').val() == ' '){
-            console.log('Export Disabled');
             $('#sync').addClass('disabled');
         }
         // DisableButton();
@@ -224,8 +211,6 @@
         });
 
         
-        // var savebutton = document.getElementById("edit");
-        //     savebutton.onclick = function ()
         $('#save').on("click", function ()
         // $('#save').click (function ()
         {
